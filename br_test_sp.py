@@ -946,7 +946,7 @@ def test_BR_SP_CL_SPSA_C2_R8_no_OVERLAY(df):
     #R8B
     assert (df_w100ws_f_sb_t['R_BH_MIN'] == 55).all() 
     assert (df_w100ws_f_sb_t['BR_R_BH_MAX'] == 66).all()
-    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 66).all()
+    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 85).all()
     
     assert (df_w100ws_f_sb_f['BR_R_HEIGHT'] == 75).all()  
     assert (df_w100ws_f_sb_f['QAH_R_HEIGHT'] == 95).all()
@@ -1013,7 +1013,7 @@ def test_BR_SP_CL_SPSA_C2_R8_OVERLAY(df):
     #R8B
     assert (df_w100ws_f_sb_t['R_BH_MIN'] == 55).all() 
     assert (df_w100ws_f_sb_t['BR_R_BH_MAX'] == 66).all()
-    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 66).all()
+    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 85).all()
     
     assert (df_w100ws_f_sb_f['BR_R_HEIGHT'] == 75).all()  
     assert (df_w100ws_f_sb_f['QAH_R_HEIGHT'] == 95).all()
@@ -1658,3 +1658,141 @@ def test_BR_LIC_SPSD_QPS_SPSA_C_M1_5_R7_3(df):
         
         
 
+def test_BR_SPG_SPSD_A_C4_4D(df):
+##todo rev if nyco is true and is false for values in R10
+    #test if the BBL starts with any of the values in valores
+    mih_no_w100ws_yes_sb_t = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == False)(df['W100WS'] == True) & (df['SB'] == True)
+    mih_no_w100ws_yes_sb_f = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == False)(df['W100WS'] == True) & (df['SB'] == False)
+    
+    mih_no_w100ws_no_sb_t = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == False)(df['W100WS'] == False) & (df['SB'] == True)
+    mih_no_w100ws_no_sb_f = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == False)(df['W100WS'] == False) & (df['SB'] == False)
+
+    mih_yes_w100ws_yes_sb_t = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == True)(df['W100WS'] == True) & (df['SB'] == True)
+    mih_yes_w100ws_yes_sb_f = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == True)(df['W100WS'] == True) & (df['SB'] == False)
+    
+    mih_yes_w100ws_no_sb_t = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == True)(df['W100WS'] == False) & (df['SB'] == True)
+    mih_yes_w100ws_no_sb_f = (df['SP'] == 'G') & (df['ZONEDIST'].isin(['C4-4D']))&(df['MIH'] == True)(df['W100WS'] == False) & (df['SB'] == False)
+
+    
+    # cond2 = (df['SP'] == 'FH') & (df['ZONEDIST'] == 'C4-5X') & (df['SB'] == False)
+    # breakpoint()
+    df_mih_no_w100ws_yes_sb_t = df[mih_no_w100ws_yes_sb_t].copy()
+    df_mih_no_w100ws_yes_sb_f = df[mih_no_w100ws_yes_sb_f].copy()
+    df_mih_no_w100ws_no_sb_t = df[mih_no_w100ws_no_sb_t].copy()
+    df_mih_no_w100ws_no_sb_f = df[mih_no_w100ws_no_sb_f].copy()
+    df_mih_yes_w100ws_yes_sb_t = df[mih_yes_w100ws_yes_sb_t].copy()
+    df_mih_yes_w100ws_yes_sb_f = df[mih_yes_w100ws_yes_sb_f].copy()
+    df_mih_yes_w100ws_no_sb_t = df[mih_yes_w100ws_no_sb_t].copy()
+    df_mih_yes_w100ws_no_sb_f = df[mih_yes_w100ws_no_sb_f].copy()
+
+    for col in columnas:
+        df_mih_no_w100ws_yes_sb_t[col] = df_mih_no_w100ws_yes_sb_t[col].apply(safe_convert)
+        df_mih_no_w100ws_yes_sb_f[col] = df_mih_no_w100ws_yes_sb_f[col].apply(safe_convert)
+        df_mih_no_w100ws_no_sb_t[col] = df_mih_no_w100ws_no_sb_t[col].apply(safe_convert)
+        df_mih_no_w100ws_no_sb_f[col] = df_mih_no_w100ws_no_sb_f[col].apply(safe_convert)
+        df_mih_yes_w100ws_yes_sb_t[col] = df_mih_yes_w100ws_yes_sb_t[col].apply(safe_convert)
+        df_mih_yes_w100ws_yes_sb_f[col] = df_mih_yes_w100ws_yes_sb_f[col].apply(safe_convert)
+        df_mih_yes_w100ws_no_sb_t[col] = df_mih_yes_w100ws_no_sb_t[col].apply(safe_convert)
+        df_mih_yes_w100ws_no_sb_f[col] = df_mih_yes_w100ws_no_sb_f[col].apply(safe_convert)
+    #W100WS = True
+    #SB True
+    assert (df_mih_no_w100ws_yes_sb_t['R_BH_MIN'] == 60).all()
+    assert (df_mih_no_w100ws_yes_sb_t['BR_R_BH_MAX'] == 105).all()
+    assert (df_mih_no_w100ws_yes_sb_t['QAH_R_BH_MAX'] == 135).all()
+    #SB False
+    assert (df_mih_no_w100ws_yes_sb_f['BR_R_HEIGHT'] == 145).all()
+    assert (df_mih_no_w100ws_yes_sb_f['QAH_R_HEIGHT'] == 185).all()
+    
+    #W100WS = False
+    #SB True
+    assert (df_mih_no_w100ws_no_sb_t['R_BH_MIN'] == 60).all()
+    assert (df_mih_no_w100ws_no_sb_t['BR_R_BH_MAX'] == 95).all()
+    assert (df_mih_no_w100ws_no_sb_t['QAH_R_BH_MAX'] == 135).all()
+    #SB False
+    assert (df_mih_no_w100ws_no_sb_f['BR_R_HEIGHT'] == 135).all()
+    assert (df_mih_no_w100ws_no_sb_f['QAH_R_HEIGHT'] == 185).all()
+    
+    
+    
+    assert (df_mih_yes_w100ws_yes_sb_t['R_BH_MIN'] == 60).all()
+    assert (df_mih_yes_w100ws_yes_sb_t['BR_R_BH_MAX'] == 105).all()
+    assert (df_mih_yes_w100ws_yes_sb_t['QAH_R_BH_MAX'] == 135).all()
+    #SB False
+    assert (df_mih_yes_w100ws_yes_sb_f['BR_R_HEIGHT'] == 145).all()
+    assert (df_mih_yes_w100ws_yes_sb_f['QAH_R_HEIGHT'] == 185).all()
+    
+    
+    
+    assert (df_mih_yes_w100ws_no_sb_t['R_BH_MIN'] == 60).all()
+    assert (df_mih_yes_w100ws_no_sb_t['BR_R_BH_MAX'] == 95).all()
+    assert (df_mih_yes_w100ws_no_sb_t['QAH_R_BH_MAX'] == 135).all()
+    #SB False
+    assert (df_mih_yes_w100ws_no_sb_f['BR_R_HEIGHT'] == 135).all()
+    assert (df_mih_yes_w100ws_no_sb_f['QAH_R_HEIGHT'] == 185).all()
+    
+    for use in uses:
+        if use in ['R', 'CF', 'C']:
+            assert (df_mih_no_w100ws_yes_sb_t[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_mih_no_w100ws_yes_sb_t[rf'BR_{use}_BH_MAX'] == 105).all()
+
+            #SB False
+            assert (df_mih_no_w100ws_yes_sb_f[rf'BR_{use}_HEIGHT'] == 135).all()
+
+            
+            #W100WS = False
+            #SB True
+            assert (df_mih_no_w100ws_no_sb_t[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_mih_no_w100ws_no_sb_t[rf'BR_{use}_BH_MAX'] == 95).all()
+            #SB False
+            assert (df_mih_no_w100ws_no_sb_f[rf'BR_{use}_HEIGHT'] == 135).all()
+
+
+            assert (df_mih_yes_w100ws_yes_sb_t[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_mih_yes_w100ws_yes_sb_t[rf'BR_{use}_BH_MAX'] == 105).all()
+            
+            #SB False
+            assert (df_mih_yes_w100ws_yes_sb_f[rf'BR_{use}_HEIGHT'] == 135).all()
+            
+            
+            assert (df_mih_yes_w100ws_no_sb_t[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_mih_yes_w100ws_no_sb_t[rf'BR_{use}_BH_MAX'] == 95).all()
+            
+            #SB False
+            assert (df_mih_yes_w100ws_no_sb_f[rf'BR_{use}_HEIGHT'] == 135).all()
+                
+        elif use == 'M':
+            assert (df_mih_no_w100ws_yes_sb_t[rf'{use}_BH_MIN']).isna().all()
+            assert (df_mih_no_w100ws_yes_sb_t[rf'BR_{use}_BH_MAX']).isna().all()
+
+            #SB False
+            assert (df_mih_no_w100ws_yes_sb_f[rf'BR_{use}_HEIGHT']).isna().all()
+            assert (df_mih_no_w100ws_yes_sb_f[rf'BR_{use}']==False).all()
+
+            
+            #W100WS = False
+            #SB True
+            assert (df_mih_no_w100ws_no_sb_t[rf'{use}_BH_MIN']).isna().all()
+            assert (df_mih_no_w100ws_no_sb_t[rf'BR_{use}_BH_MAX']).isna().all()
+            #SB False
+            assert (df_mih_no_w100ws_no_sb_f[rf'BR_{use}_HEIGHT']).isna().all()
+            assert (df_mih_no_w100ws_no_sb_f[rf'BR_{use}']==False).all()
+
+
+            assert (df_mih_yes_w100ws_yes_sb_t[rf'{use}_BH_MIN']).isna().all()
+            assert (df_mih_yes_w100ws_yes_sb_t[rf'BR_{use}_BH_MAX']).isna().all()
+            
+            #SB False
+            assert (df_mih_yes_w100ws_yes_sb_f[rf'BR_{use}_HEIGHT']).isna().all()
+            assert (df_mih_yes_w100ws_yes_sb_f[rf'BR_{use}']==False).all()
+            
+            assert (df_mih_yes_w100ws_no_sb_t[rf'{use}_BH_MIN']).isna().all()
+            assert (df_mih_yes_w100ws_no_sb_t[rf'BR_{use}_BH_MAX']).isna().all()
+            
+            #SB False
+            assert (df_mih_yes_w100ws_no_sb_f[rf'BR_{use}_HEIGHT']).isna().all()
+            assert (df_mih_yes_w100ws_no_sb_f[rf'BR_{use}']==False).all()
+            
+            
+            
+
+            
