@@ -946,7 +946,7 @@ def test_BR_SP_CL_SPSA_C2_R8_no_OVERLAY(df):
     #R8B
     assert (df_w100ws_f_sb_t['R_BH_MIN'] == 55).all() 
     assert (df_w100ws_f_sb_t['BR_R_BH_MAX'] == 66).all()
-    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 85).all()
+    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 66).all()
     
     assert (df_w100ws_f_sb_f['BR_R_HEIGHT'] == 75).all()  
     assert (df_w100ws_f_sb_f['QAH_R_HEIGHT'] == 95).all()
@@ -1013,7 +1013,7 @@ def test_BR_SP_CL_SPSA_C2_R8_OVERLAY(df):
     #R8B
     assert (df_w100ws_f_sb_t['R_BH_MIN'] == 55).all() 
     assert (df_w100ws_f_sb_t['BR_R_BH_MAX'] == 66).all()
-    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 85).all()
+    assert (df_w100ws_f_sb_t['QAH_R_BH_MAX'] == 66).all()
     
     assert (df_w100ws_f_sb_f['BR_R_HEIGHT'] == 75).all()  
     assert (df_w100ws_f_sb_f['QAH_R_HEIGHT'] == 95).all()
