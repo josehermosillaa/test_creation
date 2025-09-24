@@ -1,0 +1,21 @@
+file_name.py
+.env
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.shp.*
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.csv
+*.zip
+file_name.py
+output*.txt
