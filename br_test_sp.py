@@ -35,7 +35,9 @@ def test_BR_SP_C(df):
     for col in columnas:
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
-
+    assert not df_cond1.empty
+    assert not df_cond2.empty
+    
     assert (df_cond1['R_BH_MIN'] == 60).all()
     assert (df_cond1['BR_R_BH_MAX'] == 95).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 105).all()
@@ -74,6 +76,9 @@ def test_BR_SP_FH(df):
     for col in columnas:
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty
+    assert not df_cond2.empty
 
     assert (df_cond1['R_BH_MIN'] == 40).all()
     assert (df_cond1['BR_R_BH_MAX'] == 95).all()
@@ -114,6 +119,11 @@ def test_BR_SP_MP(df):
         df_cond2[col] = df_cond2[col].apply(safe_convert)
         df_cond3[col] = df_cond3[col].apply(safe_convert)
         df_cond4[col] = df_cond4[col].apply(safe_convert)
+    
+    assert not df_cond1.empty
+    assert not df_cond2.empty
+    assert not df_cond3.empty
+    assert not df_cond4.empty
     #W100WS = True
     #SB True
     assert (df_cond1['R_BH_MIN'] == 125).all()
@@ -179,6 +189,9 @@ def test_BR_SP_DJ_C4_5X(df):
         df_c4_5x_sb_t[col] = df_c4_5x_sb_t[col].apply(safe_convert)
         df_c4_5x_sb_f[col] = df_c4_5x_sb_f[col].apply(safe_convert)
         
+    assert not df_c4_5x_sb_t.empty
+    assert not df_c4_5x_sb_f.empty
+
 
     # C4-5X
     #SB True
@@ -248,7 +261,14 @@ def test_BR_SP_DJ_C6_2(df):
         final_cond3_c6_2_w100ws_f_sb_t[col] = final_cond3_c6_2_w100ws_f_sb_t[col].apply(safe_convert)
         final_cond3_c6_2_w100ws_f_sb_f[col] = final_cond3_c6_2_w100ws_f_sb_f[col].apply(safe_convert)
         
-
+    assert not final_cond_c6_2_w100ws_t_sb_t.empty
+    assert not final_cond_c6_2_w100ws_t_sb_f.empty
+    assert not final_cond_c6_2_w100ws_f_sb_t.empty
+    assert not final_cond_c6_2_w100ws_f_sb_f.empty
+    assert not final_cond3_c6_2_w100ws_t_sb_t.empty
+    assert not final_cond3_c6_2_w100ws_t_sb_f.empty
+    assert not final_cond3_c6_2_w100ws_f_sb_t.empty
+    assert not final_cond3_c6_2_w100ws_f_sb_f.empty
     # C6-2
     
     assert (final_cond_c6_2_w100ws_t_sb_t['R_BH_MIN'] == 40).all()
@@ -350,7 +370,11 @@ def test_BR_SP_DJ_C6_3(df):
         df_c6_3_w100ws_f_sb_t[col] = pd.to_numeric(df_c6_3_w100ws_f_sb_t[col], errors='coerce')
         df_c6_3_w100ws_f_sb_f[col] = pd.to_numeric(df_c6_3_w100ws_f_sb_f[col], errors='coerce')
         
-        
+    
+    assert not df_c6_3_w100ws_t_sb_t.empty
+    assert not df_c6_3_w100ws_t_sb_f.empty
+    assert not df_c6_3_w100ws_f_sb_t.empty
+    assert not df_c6_3_w100ws_f_sb_f.empty
     # C6-3
     #SB True
     assert (df_c6_3_w100ws_t_sb_t['R_BH_MIN'] == 40).all()
@@ -419,6 +443,10 @@ def test_BR_SP_DJ_C6_4(df):
         df_c6_4_w100ws_f_sb_t[col] = pd.to_numeric(df_c6_4_w100ws_f_sb_t[col], errors='coerce')
         df_c6_4_w100ws_f_sb_f[col] = pd.to_numeric(df_c6_4_w100ws_f_sb_f[col], errors='coerce')
         
+    assert not df_c6_4_w100ws_t_sb_t.empty
+    assert not df_c6_4_w100ws_t_sb_f.empty
+    assert not df_c6_4_w100ws_f_sb_t.empty
+    assert not df_c6_4_w100ws_f_sb_f.empty
         
     # C6-4
     #SB True
@@ -474,7 +502,8 @@ def test_BR_SP_SNX_M1_5_R7D(df):
         df_cond1_sb_t[col] = pd.to_numeric(df_cond1_sb_t[col], errors='coerce')
         df_cond1_sb_f[col] = pd.to_numeric(df_cond1_sb_f[col], errors='coerce')
         
-        
+    assert not df_cond1_sb_t.empty
+    assert not df_cond1_sb_f.empty 
     # C6-4
     #SB True
     assert (df_cond1_sb_t['R_BH_MIN'] == 60).all() 
@@ -507,7 +536,8 @@ def test_BR_SP_SNX_M1_5_R7X(df):
         df_cond1_sb_t[col] = pd.to_numeric(df_cond1_sb_t[col], errors='coerce')
         df_cond1_sb_f[col] = pd.to_numeric(df_cond1_sb_f[col], errors='coerce')
         
-        
+    assert not df_cond1_sb_t.empty
+    assert not df_cond1_sb_f.empty    
     # C6-4
     #SB True
     assert (df_cond1_sb_t['R_BH_MIN'] == 60).all() 
@@ -538,6 +568,9 @@ def test_BR_SP_SNX_M1_5_R9X_not_100531(df):
         df_cond1[col] = pd.to_numeric(df_cond1[col], errors='coerce')
         df_cond2[col] = pd.to_numeric(df_cond2[col], errors='coerce')
 
+    assert not df_cond1.empty
+    assert not df_cond2.empty
+    
     assert (df_cond1['R_BH_MIN'] == 85).all()
     assert (df_cond1['BR_R_BH_MAX'] == 145).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 145).all()
@@ -561,6 +594,8 @@ def test_BR_SP_SNX_M1_5_R9X_100531(df):
     df_cond1 = df[cond1].copy()
     df_cond2 = df[cond2].copy()
 
+    assert not df_cond1.empty
+    assert not df_cond2.empty
     
     for col in columnas:
         df_cond1[col] = pd.to_numeric(df_cond1[col], errors='coerce')
@@ -596,7 +631,8 @@ def test_BR_SP_SNX_M1_5_R10(df):
         df_cond1_sb_t[col] = pd.to_numeric(df_cond1_sb_t[col], errors='coerce')
         df_cond1_sb_f[col] = pd.to_numeric(df_cond1_sb_f[col], errors='coerce')
         
-        
+    assert not df_cond1_sb_t.empty
+    assert not df_cond1_sb_f.empty
     # C6-4
     #SB True
     assert (df_cond1_sb_t['R_BH_MIN'] == 125).all() 
@@ -625,6 +661,10 @@ def test_BR_SP_SNX_M1_6_R10(df):
     for col in columnas:
         df_cond1_sb_t[col] = pd.to_numeric(df_cond1_sb_t[col], errors='coerce')
         df_cond1_sb_f[col] = pd.to_numeric(df_cond1_sb_f[col], errors='coerce')
+
+
+    assert not df_cond1_sb_t.empty
+    assert not df_cond1_sb_f.empty
 
     assert (df_cond1_sb_t['R_BH_MIN'] == 125).all() 
     assert (df_cond1_sb_t['BR_R_BH_MAX'] == 155).all()
@@ -659,7 +699,11 @@ def test_BR_SP_HSQ_no_SPSD_M1_6(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
+    
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
         
     # C6-4
     #SB True
@@ -708,6 +752,10 @@ def test_BR_SP_HSQ_SPSD_M1_6(df):
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
         
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
         
     # C6-4
     #SB True
@@ -757,7 +805,11 @@ def test_BR_SP_CL_SPSA_A_R8_no_OVERLAY(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
+
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -824,7 +876,11 @@ def test_BR_SP_CL_SPSA_A_R8_OVERLAY(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
+    
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -881,6 +937,10 @@ def test_BR_SP_CL_SPSA_A_C6_2(df):
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
         
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -935,7 +995,11 @@ def test_BR_SP_CL_SPSA_C2_R8_no_OVERLAY(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
+    
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty    
         
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 40).all() 
@@ -1003,6 +1067,10 @@ def test_BR_SP_CL_SPSA_C2_R8_OVERLAY(df):
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
         
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
         
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 40).all() 
@@ -1063,7 +1131,11 @@ def test_BR_SP_CL_SPSA_C2_R9_OVERLAY(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
+    
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
         
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 60).all() 
@@ -1124,8 +1196,10 @@ def test_BR_SP_CL_SPSA_C2_R9_no_OVERLAY(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
-        
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 105).all()
@@ -1192,8 +1266,11 @@ def test_BR_TMU_SPSA_A2_C6_3(df):
         df_w100ws_t_sb_f[col] = pd.to_numeric(df_w100ws_t_sb_f[col], errors='coerce')
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
-        
-        
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
+
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 105).all()
@@ -1249,6 +1326,10 @@ def test_BR_TMU_SPSA_A4_C6_3A(df):
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
         
+    assert not df_w100ws_t_sb_t.empty
+    assert not df_w100ws_t_sb_f.empty
+    assert not df_w100ws_f_sb_t.empty
+    assert not df_w100ws_f_sb_f.empty
         
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 60).all() 
@@ -1309,7 +1390,10 @@ def test_BR_LI_SPSD_A_C6_2G_C6_2(df):
         df_w100c_f_sb_t[col] = pd.to_numeric(df_w100c_f_sb_t[col], errors='coerce')
         df_w100c_f_sb_f[col] = pd.to_numeric(df_w100c_f_sb_f[col], errors='coerce')
         
-
+    assert not df_w100c_t_sb_t.empty, 'df is empty'
+    assert not df_w100c_t_sb_f.empty, 'df is empty'
+    assert not df_w100c_f_sb_t.empty, 'df is empty'
+    assert not df_w100c_f_sb_f.empty, 'df is empty'
     #R7A
     assert (df_w100c_t_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_w100c_t_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -1367,6 +1451,12 @@ def test_BR_LI_SPSD_A1_C6_2G_C6_2_C6_1(df):
         df_w100c_t_sb_f[col] = pd.to_numeric(df_w100c_t_sb_f[col], errors='coerce')
         df_w100c_f_sb_t[col] = pd.to_numeric(df_w100c_f_sb_t[col], errors='coerce')
         df_w100c_f_sb_f[col] = pd.to_numeric(df_w100c_f_sb_f[col], errors='coerce')
+    
+    assert not df_w100c_t_sb_t.empty , 'df is empty'
+    assert not df_w100c_t_sb_f.empty , 'df is empty'
+    assert not df_w100c_f_sb_t.empty , 'df is empty'
+    assert not df_w100c_f_sb_f.empty , 'df is empty'
+    
     #R7A
     assert (df_w100c_t_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_w100c_t_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -1424,7 +1514,10 @@ def test_BR_LI_SPSD_B_C6_3(df):
         df_w100ws_f_sb_t[col] = pd.to_numeric(df_w100ws_f_sb_t[col], errors='coerce')
         df_w100ws_f_sb_f[col] = pd.to_numeric(df_w100ws_f_sb_f[col], errors='coerce')
         
-        
+    assert not df_w100ws_t_sb_t.empty, 'df is empty'
+    assert not df_w100ws_t_sb_f.empty, 'df is empty'
+    assert not df_w100ws_f_sb_t.empty, 'df is empty'
+    assert not df_w100ws_f_sb_f.empty, 'df is empty'
     #R7A
     assert (df_w100ws_t_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_w100ws_t_sb_t['BR_R_BH_MAX'] == 105).all()
@@ -1476,7 +1569,8 @@ def test_BR_LI_SPSD_C_C6_1G_C6_1(df):
         df_cond_sb_t[col] = pd.to_numeric(df_cond_sb_t[col], errors='coerce')
         df_cond_sb_f[col] = pd.to_numeric(df_cond_sb_f[col], errors='coerce')
         
-        
+    assert not df_cond_sb_t.empty , 'df is empty'
+    assert not df_cond_sb_f.empty , 'df is empty'
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 40).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 75).all()
@@ -1513,7 +1607,8 @@ def test_BR_LIC_SPSD_CSS_SPSA_SHRS_C5_3(df):
         df_cond_sb_f[col] = pd.to_numeric(df_cond_sb_f[col], errors='coerce')
         
 
-        
+    assert not df_cond_sb_t.empty , 'df is empty'
+    assert not df_cond_sb_f.empty , 'df is empty'
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 85).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 85).all()
@@ -1550,7 +1645,8 @@ def test_BR_LIC_SPSD_QPS_SPSA_A1_M1_6_R10(df):
         df_cond_sb_t[col] = df_cond_sb_t[col].apply(safe_convert)
         df_cond_sb_f[col] = df_cond_sb_f[col].apply(safe_convert)
         
-        
+    assert not df_cond_sb_t.empty , 'df is empty'
+    assert not df_cond_sb_f.empty , 'df is empty'
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 'No limit').all()
@@ -1582,7 +1678,8 @@ def test_BR_LIC_SPSD_QPS_SPSA_A2_M1_6_R10(df):
         df_cond_sb_t[col] = df_cond_sb_t[col].apply(safe_convert)
         df_cond_sb_f[col] = df_cond_sb_f[col].apply(safe_convert)
         
-        
+    assert not df_cond_sb_t.empty , 'df is empty'
+    assert not df_cond_sb_f.empty , 'df is empty'
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 150).all()
@@ -1612,7 +1709,8 @@ def test_BR_LIC_SPSD_QPS_SPSA_B_M1_5_R9(df):
         df_cond_sb_t[col] = df_cond_sb_t[col].apply(safe_convert)
         df_cond_sb_f[col] = df_cond_sb_f[col].apply(safe_convert)
         
-        
+    assert not df_cond_sb_t.empty , 'df is empty'
+    assert not df_cond_sb_f.empty , 'df is empty'
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 100).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 150).all()
@@ -1642,7 +1740,8 @@ def test_BR_LIC_SPSD_QPS_SPSA_C_M1_5_R7_3(df):
         df_cond_sb_t[col] = df_cond_sb_t[col].apply(safe_convert)
         df_cond_sb_f[col] = df_cond_sb_f[col].apply(safe_convert)
         
-        
+    assert not df_cond_sb_t.empty , 'df is empty' 
+    assert not df_cond_sb_f.empty , 'df is empty'    
     #R7A
     assert (df_cond_sb_t['R_BH_MIN'] == 60).all() 
     assert (df_cond_sb_t['BR_R_BH_MAX'] == 100).all()
@@ -1685,7 +1784,7 @@ def test_BR_SP_G_SPSD_A_C4_4D(df):
     df_mih_yes_w100ws_yes_sb_f = df[mih_yes_w100ws_yes_sb_f].copy()
     df_mih_yes_w100ws_no_sb_t = df[mih_yes_w100ws_no_sb_t].copy()
     df_mih_yes_w100ws_no_sb_f = df[mih_yes_w100ws_no_sb_f].copy()
-
+    
     for col in columnas:
         df_mih_no_w100ws_yes_sb_t[col] = df_mih_no_w100ws_yes_sb_t[col].apply(safe_convert)
         df_mih_no_w100ws_yes_sb_f[col] = df_mih_no_w100ws_yes_sb_f[col].apply(safe_convert)
@@ -1697,6 +1796,18 @@ def test_BR_SP_G_SPSD_A_C4_4D(df):
         df_mih_yes_w100ws_no_sb_f[col] = df_mih_yes_w100ws_no_sb_f[col].apply(safe_convert)
     #W100WS = True
     #SB True
+    # breakpoint()
+    # assert not df_mih_no_w100ws_yes_sb_t.empty , 'el df no debe venir vacio'
+    # assert not df_mih_no_w100ws_yes_sb_f.empty , 'el df no debe venir vacio'
+    assert not df_mih_no_w100ws_no_sb_t.empty , 'el df no debe venir vacio'
+    assert not df_mih_no_w100ws_no_sb_f.empty , 'el df no debe venir vacio'
+    assert not df_mih_yes_w100ws_yes_sb_t.empty , 'el df no debe venir vacio'
+    assert not df_mih_yes_w100ws_yes_sb_f.empty , 'el df no debe venir vacio'
+    assert not df_mih_yes_w100ws_no_sb_t.empty , 'el df no debe venir vacio'
+    assert not df_mih_yes_w100ws_no_sb_f.empty , 'el df no debe venir vacio'
+    
+    
+    
     assert (df_mih_no_w100ws_yes_sb_t['R_BH_MIN'] == 60).all()
     assert (df_mih_no_w100ws_yes_sb_t['BR_R_BH_MAX'] == 105).all()
     assert (df_mih_no_w100ws_yes_sb_t['QAH_R_BH_MAX'] == 135).all()
@@ -1809,6 +1920,10 @@ def test_BR_SP_G_SPSD_B_SPSA_B1_M1_4(df):
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
 
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+
     assert (df_cond1['R_BH_MIN']).isna().all()
     assert (df_cond1['BR_R_BH_MAX']).isna().all()
     assert (df_cond1['QAH_R_BH_MAX']).isna().all()
@@ -1837,6 +1952,9 @@ def test_BR_SP_G_SPSD_B_SPSA_B2_M1_4(df):
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
 
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+
     assert (df_cond1['R_BH_MIN']).isna().all()
     assert (df_cond1['BR_R_BH_MAX']).isna().all()
     assert (df_cond1['QAH_R_BH_MAX']).isna().all()
@@ -1863,6 +1981,9 @@ def test_BR_SP_G_SPSD_B_SPSA_B2_M1_4_R6A(df):
     for col in columnas:
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
 
     assert (df_cond1['R_BH_MIN'] ==40).all()
     assert (df_cond1['BR_R_BH_MAX'] ==65).all()
@@ -1918,6 +2039,9 @@ def test_BR_SP_G_SPSD_B_SPSA_B2_M1_4_R7A(df):
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
 
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+
     assert (df_cond1['R_BH_MIN'] ==40).all()
     assert (df_cond1['BR_R_BH_MAX'] ==75).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 75).all()
@@ -1939,11 +2063,12 @@ def test_BR_SP_G_SPSD_B_SPSA_B2_M1_4_R7X(df):
     df_cond1 = df[cond1].copy()
     df_cond2 = df[cond2].copy()
 
-    
     for col in columnas:
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
 
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
     assert (df_cond1['R_BH_MIN'] ==60).all()
     assert (df_cond1['BR_R_BH_MAX'] ==105).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 105).all()
@@ -1968,7 +2093,10 @@ def test_BR_SP_G_SPSD_C_M1_4_R7_2(df):
     for col in columnas:
         df_cond1[col] = df_cond1[col].apply(safe_convert)
         df_cond2[col] = df_cond2[col].apply(safe_convert)
-
+    
+    # assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    # assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    
     assert (df_cond1['R_BH_MIN'] ==40).all()
     assert (df_cond1['BR_R_BH_MAX'] ==85).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 85).all()
@@ -1985,9 +2113,9 @@ def test_BR_SP_G_SPSD_C_M1_4_R7_2(df):
         
 def test_BR_SP_ETC_R6_1(df):
     cond1_no_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == True)&(df['NYCO'] == False)
-    cond2_no_overlay = (df['SP'] == 'ETc') & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == False)&(df['NYCO'] == False)
+    cond2_no_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == False)&(df['NYCO'] == False)
     cond3_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == True)&(df['NYCO'] == True)
-    cond4_overlay = (df['SP'] == 'ETc') & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == False)&(df['NYCO'] == True)
+    cond4_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R6-1') & (df['SB'] == False)&(df['NYCO'] == True)
     
     df_cond1 = df[cond1_no_overlay].copy()
     df_cond2 = df[cond2_no_overlay].copy()
@@ -1999,7 +2127,15 @@ def test_BR_SP_ETC_R6_1(df):
         df_cond2[col] = df_cond2[col].apply(safe_convert)
         df_cond3[col] = df_cond3[col].apply(safe_convert)
         df_cond4[col] = df_cond4[col].apply(safe_convert)
-
+    
+    
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    assert not df_cond3.empty, "df_cond3 esta vacio, no se valido ninguna fila"
+    assert not df_cond4.empty, "df_cond4 esta vacio, no se valido ninguna fila"
+    
+    
+    
     assert (df_cond1['R_BH_MIN'] ==40).all()
     assert (df_cond1['BR_R_BH_MAX'] ==65).all()
     assert (df_cond1['QAH_R_BH_MAX'] == 65).all()
@@ -2043,3 +2179,337 @@ def test_BR_SP_ETC_R6_1(df):
             assert (df_cond3[rf'BR_{use}_BH_MAX']).isna().all()
             assert (df_cond4[rf'BR_{use}_HEIGHT']).isna().all()
             assert ((df_cond4[rf'BR_{use}']).isna()|(df_cond4[rf'BR_{use}']==False)).all()
+            
+
+def test_BR_SP_ETC_R7_2(df):
+    cond1_no_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R7-2') & (df['SB'] == True)&(df['NYCO'] == False)
+    cond2_no_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R7-2') & (df['SB'] == False)&(df['NYCO'] == False)
+    cond3_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R7-2') & (df['SB'] == True)&(df['NYCO'] == True)
+    cond4_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R7-2') & (df['SB'] == False)&(df['NYCO'] == True)
+
+    df_cond1 = df[cond1_no_overlay].copy()
+    df_cond2 = df[cond2_no_overlay].copy()
+    df_cond3 = df[cond3_overlay].copy()
+    df_cond4 = df[cond4_overlay].copy()
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+        df_cond3[col] = df_cond3[col].apply(safe_convert)
+        df_cond4[col] = df_cond4[col].apply(safe_convert)
+    
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    assert not df_cond3.empty, "df_cond3 esta vacio, no se valido ninguna fila"
+    assert not df_cond4.empty, "df_cond4 esta vacio, no se valido ninguna fila"
+    
+    
+    assert (df_cond1['R_BH_MIN'] ==40).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==85).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 85).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 155).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 155).all()
+    
+    
+    assert (df_cond3['R_BH_MIN'] ==40).all()
+    assert (df_cond3['BR_R_BH_MAX'] ==85).all()
+    assert (df_cond3['QAH_R_BH_MAX'] == 85).all()
+    assert (df_cond4['BR_R_HEIGHT'] == 155).all()
+    assert (df_cond4['QAH_R_HEIGHT'] == 155).all()
+    # assert ((df_cond2['BR_R']).isna()|(df_cond2['BR_R']==False)).all()
+    
+
+    for use in uses:
+        if use  == 'CF':
+            assert (df_cond1[rf'{use}_BH_MIN'] == 40).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 85).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 155).all()
+            
+            assert (df_cond3[rf'{use}_BH_MIN'] == 40).all()
+            assert (df_cond3[rf'BR_{use}_BH_MAX'] == 85).all()
+            assert (df_cond4[rf'BR_{use}_HEIGHT'] == 155).all()
+        elif use == 'C':
+                assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+                assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+                assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+                assert ((df_cond2[rf'BR_{use}']==False)|(df_cond2[rf'BR_{use}'].isna())).all()
+                
+                assert (df_cond3[rf'{use}_BH_MIN'] == 40).all()
+                assert (df_cond3[rf'BR_{use}_BH_MAX'] == 85).all()
+                assert (df_cond4[rf'BR_{use}_HEIGHT'] == 155).all()
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+            
+            assert (df_cond3[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond3[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond4[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond4[rf'BR_{use}']).isna()|(df_cond4[rf'BR_{use}']==False)).all()
+            
+
+def test_BR_SP_ETC_R8(df):
+    cond1_no_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R8') & (df['SB'] == True)&(df['NYCO'] == False)
+    cond2_no_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R8') & (df['SB'] == False)&(df['NYCO'] == False)
+    cond3_overlay = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'R8') & (df['SB'] == True)&(df['NYCO'] == True)
+    cond4_overlay = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'R8') & (df['SB'] == False)&(df['NYCO'] == True)
+
+    df_cond1 = df[cond1_no_overlay].copy()
+    df_cond2 = df[cond2_no_overlay].copy()
+    df_cond3 = df[cond3_overlay].copy()
+    df_cond4 = df[cond4_overlay].copy()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+        df_cond3[col] = df_cond3[col].apply(safe_convert)
+        df_cond4[col] = df_cond4[col].apply(safe_convert)
+    
+    
+    # assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    # assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    assert not df_cond3.empty, "df_cond3 esta vacio, no se valido ninguna fila"
+    assert not df_cond4.empty, "df_cond4 esta vacio, no se valido ninguna fila"
+    
+    
+    assert (df_cond1['R_BH_MIN'] ==60).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==105).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 105).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 215).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 215).all()
+    
+    
+    assert (df_cond3['R_BH_MIN'] ==60).all()
+    assert (df_cond3['BR_R_BH_MAX'] ==105).all()
+    assert (df_cond3['QAH_R_BH_MAX'] == 105).all()
+    assert (df_cond4['BR_R_HEIGHT'] == 215).all()
+    assert (df_cond4['QAH_R_HEIGHT'] == 215).all()
+    # assert ((df_cond2['BR_R']).isna()|(df_cond2['BR_R']==False)).all()
+    
+
+    for use in uses:
+        if use  == 'CF':
+            assert (df_cond1[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 105).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 215).all()
+            
+            assert (df_cond3[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_cond3[rf'BR_{use}_BH_MAX'] == 105).all()
+            assert (df_cond4[rf'BR_{use}_HEIGHT'] == 215).all()
+        elif use == 'C':
+                assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+                assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+                assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+                assert ((df_cond2[rf'BR_{use}']==False)|(df_cond2[rf'BR_{use}'].isna())).all()
+                
+                assert (df_cond3[rf'{use}_BH_MIN'] == 60).all()
+                assert (df_cond3[rf'BR_{use}_BH_MAX'] == 105).all()
+                assert (df_cond4[rf'BR_{use}_HEIGHT'] == 215).all()
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+            
+            assert (df_cond3[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond3[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond4[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond4[rf'BR_{use}']).isna()|(df_cond4[rf'BR_{use}']==False)).all()
+            
+
+def test_BR_SP_ETC_C4_3(df):
+    cond1 = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'C4-3') & (df['SB'] == True)
+    cond2 = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'C4-3') & (df['SB'] == False)
+
+
+    df_cond1 = df[cond1].copy()
+    df_cond2 = df[cond2].copy()
+
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    
+    assert (df_cond1['R_BH_MIN'] ==40).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==65).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 65).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 125).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 125).all()
+    
+    
+ 
+
+    for use in uses:
+        if use in ['CF','C']:
+            assert (df_cond1[rf'{use}_BH_MIN'] == 40).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 65).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 125).all()
+            
+
+        
+                
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+            
+            
+            
+def test_BR_SP_ETC_C4_4(df):
+    cond1 = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'C4-4') & (df['SPSD']=='empty')&(df['SPSA']=='empty') & (df['SB'] == True)
+    cond2 = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'C4-4')  & (df['SPSD']=='empty')&(df['SPSA']=='empty') & (df['SB'] == False)
+
+
+    df_cond1 = df[cond1].copy()
+    df_cond2 = df[cond2].copy()
+    
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+ 
+    assert (df_cond1['R_BH_MIN'] ==40).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==85).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 85).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 155).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 155).all()
+    
+    
+ 
+
+    for use in uses:
+        if use in ['CF','C']:
+            assert (df_cond1[rf'{use}_BH_MIN'] == 40).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 85).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 155).all()
+            
+
+        
+                
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+            
+            
+            
+      
+def test_BR_SP_ETC_C4_4_SPSD_B_SPSA_none(df):
+    cond1 = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'C4-4') & (df['SPSD']=='B')&(df['SPSA']=='empty') & (df['SB'] == True)
+    cond2 = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'C4-4')  & (df['SPSD']=='B')&(df['SPSA']=='empty') & (df['SB'] == False)
+
+
+    df_cond1 = df[cond1].copy()
+    df_cond2 = df[cond2].copy()
+    
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    
+    assert (df_cond1['R_BH_MIN'] ==60).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==95).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 95).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 185).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 185).all()
+    
+    
+ 
+
+    for use in uses:
+        if use in ['CF','C']:
+            assert (df_cond1[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 95).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 185).all()
+            
+
+        
+                
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+            
+            
+def test_BR_SP_ETC_C4_4_SPSD_B_SPSA_B1(df):
+    cond1 = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'C4-4') & (df['SPSD']=='B')&(df['SPSA']=='B1') & (df['SB'] == True)
+    cond2 = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'C4-4')  & (df['SPSD']=='B')&(df['SPSA']=='B1') & (df['SB'] == False)
+
+
+    df_cond1 = df[cond1].copy()
+    df_cond2 = df[cond2].copy()
+    
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    
+    assert (df_cond1['R_BH_MIN'] ==60).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==95).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 95).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 185).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 185).all()
+    
+ 
+ 
+
+    for use in uses:
+        if use in ['CF','C']:
+            assert (df_cond1[rf'{use}_BH_MIN'] == 60).all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX'] == 95).all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT'] == 185).all()
+            
+
+        
+                
+        else:
+            assert (df_cond1[rf'{use}_BH_MIN']).isna().all()
+            assert (df_cond1[rf'BR_{use}_BH_MAX']).isna().all()
+            assert (df_cond2[rf'BR_{use}_HEIGHT']).isna().all()
+            assert ((df_cond2[rf'BR_{use}']).isna()|(df_cond2[rf'BR_{use}']==False)).all()
+
+
+def test_BR_SP_ETC_M1_1A_R7_3_SPSD_A_SPSA_none(df):
+    cond1 = (df['SP'] == 'ETC')  & (df['ZONEDIST'] == 'M1-1A/R7-3') & (df['SPSD']=='A')&(df['SPSA']=='empty') & (df['SB'] == True)
+    cond2 = (df['SP'] == 'ETC') & (df['ZONEDIST'] == 'M1-1A/R7-3')  & (df['SPSD']=='A')&(df['SPSA']=='empty') & (df['SB'] == False)
+
+
+    df_cond1 = df[cond1].copy()
+    df_cond2 = df[cond2].copy()
+    
+    # breakpoint()
+    for col in columnas:
+        df_cond1[col] = df_cond1[col].apply(safe_convert)
+        df_cond2[col] = df_cond2[col].apply(safe_convert)
+
+    assert not df_cond1.empty, "df_cond1 esta vacio, no se valido ninguna fila"
+    assert not df_cond2.empty, "df_cond2 esta vacio, no se valido ninguna fila"
+    
+    assert (df_cond1['R_BH_MIN'] ==60).all()
+    assert (df_cond1['BR_R_BH_MAX'] ==95).all()
+    assert (df_cond1['QAH_R_BH_MAX'] == 95).all()
+    assert (df_cond2['BR_R_HEIGHT'] == 185).all()
+    assert (df_cond2['QAH_R_HEIGHT'] == 185).all()
+    
+    
+ 
+
+    for use in uses:
+        assert (df_cond1[rf'{use}_BH_MIN'] == 60).all()
+        assert (df_cond1[rf'BR_{use}_BH_MAX'] == 95).all()
+        assert (df_cond2[rf'BR_{use}_HEIGHT'] == 185).all()
